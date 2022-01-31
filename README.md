@@ -1,4 +1,4 @@
-#CAPSTONE PROJECT QA-DFESW7
+# CAPSTONE PROJECT QA-DFESW7
 >Bank REST API written in JAVA with SpringBoot framework
 
 ![Java](https://img.shields.io/badge/-java-blue)
@@ -8,7 +8,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/vinaypandat/qa-final-project)
 ![GitHub last commit](https://img.shields.io/github/last-commit/vinaypandat/qa-final-project)
 
-##Project Specifications
+## Project Specifications
 
 This is final Springboot API project of QA Software Development Bootcamp.
 
@@ -23,7 +23,7 @@ This is final Springboot API project of QA Software Development Bootcamp.
 > -	A series of API calls designed with postman, used for CRUD functionality. (Create, Read, Update, Delete)
 > -	Fully designed test suites for the application you are creating, including both unit and integration tests.
 
-###Tech Stack
+### Tech Stack
 
 - Version Control System: **Git**
 - Source Code Management: **Github**
@@ -35,12 +35,16 @@ This is final Springboot API project of QA Software Development Bootcamp.
 - Unit & Integration Testing: **JUnit**
 
 
-##Screenshots
-###Postman
+## Screenshots
+### Postman
 > Will be posted soon
-###Database
+### Database
 > Will be posted soon
-###Test Results
+### Test Results
 > Will be posted soon
-###Coverage Report
+### Coverage Report
 > Will be posted soon
+
+## Licence
+
+Distributed under the MIT Licence.
