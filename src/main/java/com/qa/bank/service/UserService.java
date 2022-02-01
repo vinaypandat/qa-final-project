@@ -5,21 +5,19 @@ import com.qa.bank.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 /**
  * UserService to communicate with UserRepository
+ * This contains business logic to perform CRUD operation on User entity
  * @author Vinay
  */
 
 @Service
 public class UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    /**
-     * Dependency injection(Constructor injection)
-     * @param userRepository
-     */
     @Autowired
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
@@ -30,7 +28,7 @@ public class UserService {
      * @param user User to be registered
      * @return Returns registered user
      */
-    public User create(User user){
+    public User createUser(User user){
         return userRepository.save(user);
 
     }
@@ -42,5 +40,40 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    /**
+     * UPDATE user in database
+     * @param id ID of user to update
+     * @param user New details of User
+     * @return Return changed details of User
+     */
+    public User updateUser(Long id, User user){
+        User userToUpdate = userRepository.findById(id).orElseThrow(()-> {
+            throw new EntityNotFoundException("Used with this ID doesn't exist");
+        });
+        userToUpdate.setUsername(user.getUsername());
+        userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setFirstName(user.getFirstName());
+        userToUpdate.setLastName(user.getLastName());
+        userToUpdate.setAge(user.getAge());
+        return userRepository.save(userToUpdate);
+    }
 
+    /**
+     * DELETE User in database
+     * @param id ID of the user to be deleted
+     * @return Returns deleted user
+     */
+    public User deleteUser(Long id){
+        User deletedUser = userRepository.findById(id).orElseThrow(()-> {
+            throw new EntityNotFoundException("Used with this ID doesn't exist");
+        });
+        userRepository.deleteById(id);
+        return new User(
+                deletedUser.getUsername(),
+                deletedUser.getPassword(),
+                deletedUser.getFirstName(),
+                deletedUser.getLastName(),
+                deletedUser.getAge()
+        );
+    }
 }

@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping(path = "/user")     // Path to access UserController
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService){
@@ -32,8 +32,8 @@ public class UserController {
      * @return Returns registered user
      */
     @PostMapping(path = "/register")
-    public ResponseEntity<User> create(@Valid @RequestBody User user){
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.create(user));
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user){
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(user));
     }
 
     /**
@@ -43,5 +43,26 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<User>> getUsers(){
         return ResponseEntity.status(HttpStatus.OK).body(userService.getUsers());
+    }
+
+    /**
+     * UPDATE
+     * @param id ID of user to update
+     * @param user New details of User
+     * @return Return changed details of User
+     */
+    @PutMapping(path = "/update/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable("id") Long id,@Valid @RequestBody User user){
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(userService.updateUser(id, user));
+    }
+
+    /**
+     * DELETE
+     * @param id ID of the user to be deleted
+     * @return Returns deleted user
+     */
+    @DeleteMapping(path = "/delete/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable("id") Long id){
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(userService.deleteUser(id));
     }
 }

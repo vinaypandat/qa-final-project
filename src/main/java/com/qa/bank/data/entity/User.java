@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 /**
+ * This is User entity which maps to 'user' table in database
  * @author Vinay
  */
 
