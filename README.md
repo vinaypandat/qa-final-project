@@ -13,8 +13,6 @@
 
 This is final Springboot API project of QA Software Development Bootcamp.
 
-[Click to view Jira boards](https://vinaypandat.atlassian.net/jira/software/projects/QFP/boards/4)
-
 ### MVP Requirements
 
 > -	Code fully integrated into a Version Control System using the feature-branch model: main/dev/multiple features.
@@ -37,6 +35,9 @@ This is final Springboot API project of QA Software Development Bootcamp.
 - Build Tool: **Maven**
 - Unit & Integration Testing: **JUnit**
 
+## Links
+- [JAVA-docs](https://vinaypandat.github.io/qa-final-project/)
+- [Jira boards](https://vinaypandat.atlassian.net/jira/software/projects/QFP/boards/4)
 
 ## Screenshots
 ### Postman
