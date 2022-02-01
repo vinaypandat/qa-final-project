@@ -35,13 +35,56 @@ This is final Springboot API project of QA Software Development Bootcamp.
 - Build Tool: **Maven**
 - Unit & Integration Testing: **JUnit**
 
+---
+
 ## Links
 - [JAVA-docs](https://vinaypandat.github.io/qa-final-project/)
 - [Jira boards](https://vinaypandat.atlassian.net/jira/software/projects/QFP/boards/4)
 
+---
+## Usage
+### Field Constraints
+
+- **id:** auto-generated.
+- **username:** Must be unique and  not null.
+- **password:** not null.
+- **firstName:** not null and must be between 2 and 15 characters.
+- **lastName:** not null and must be between 2 and 15 characters.
+- **age:** integer and between 18 and 120.
+
+### CRUD operations
+#### CREATE
+
+Creates user in database. To register a user, username field must be unique.
+> http://localhost:8080/user/register/
+
+#### READ
+
+Read all users from database.
+
+>http://localhost:8080/user/
+
+#### UPDATE
+
+Updates user by id. It will give user doesn't exit if ID is not in the database.
+
+>http://localhost:8080/user/update/{id}
+
+#### DELETE
+
+Deletes user by id. It will give user doesn't exit if ID is not in the database.
+
+>http://localhost:8080/user/delete/{id} 
+
+---
+
 ## Screenshots
 ### Postman
-> Will be posted soon
+
+> Read all users from database
+
+![](https://github.com/vinaypandat/qa-final-project/blob/documents/Documents/images/postman/READ_all.png)
+
 ### Database
 > Will be posted soon
 ### Test Results
