@@ -2,11 +2,11 @@ package com.qa.bank.service;
 
 import com.qa.bank.data.entity.User;
 import com.qa.bank.data.repository.UserRepository;
+import com.qa.bank.exceptions.UserNotFoundException;
+import com.qa.bank.exceptions.UsernameAlreadyExists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityExistsException;
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 /**
@@ -33,11 +33,10 @@ public class UserService {
         if (!userRepository.existsByUsername(user.getUsername())){
             return userRepository.save(user);
         } else{
-            throw new EntityExistsException("User with this username already exists");
+            throw new UsernameAlreadyExists("User with this username already exists");
         }
-
-
     }
+
     /**
      * READ all users from database
      * @return Returns list of Users
@@ -54,7 +53,7 @@ public class UserService {
      */
     public User updateUser(Long id, User user){
         User userToUpdate = userRepository.findById(id).orElseThrow(()-> {
-            throw new EntityNotFoundException("Used with this ID doesn't exist");
+            throw new UserNotFoundException("User with ID " + id + " doesn't exist");
         });
         userToUpdate.setUsername(user.getUsername());
         userToUpdate.setPassword(user.getPassword());
@@ -71,7 +70,7 @@ public class UserService {
      */
     public User deleteUser(Long id){
         User deletedUser = userRepository.findById(id).orElseThrow(()-> {
-            throw new EntityNotFoundException("Used with this ID doesn't exist");
+            throw new UserNotFoundException("User with ID " + id + " doesn't exist");
         });
         userRepository.deleteById(id);
         return new User(
