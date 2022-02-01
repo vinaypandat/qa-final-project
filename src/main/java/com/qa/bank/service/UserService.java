@@ -5,6 +5,7 @@ import com.qa.bank.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
@@ -29,7 +30,12 @@ public class UserService {
      * @return Returns registered user
      */
     public User createUser(User user){
-        return userRepository.save(user);
+        if (!userRepository.existsByUsername(user.getUsername())){
+            return userRepository.save(user);
+        } else{
+            throw new EntityExistsException("User with this username already exists");
+        }
+
 
     }
     /**
