@@ -1,0 +1,6 @@
+com.qa.bank
+com.qa.bank.configuration
+com.qa.bank.controller
+com.qa.bank.data.entity
+com.qa.bank.data.repository
+com.qa.bank.service

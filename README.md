@@ -8,9 +8,12 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/vinaypandat/qa-final-project)
 ![GitHub last commit](https://img.shields.io/github/last-commit/vinaypandat/qa-final-project)
 
+
 ## Project Specifications
 
 This is final Springboot API project of QA Software Development Bootcamp.
+
+[Click to view Jira boards](https://vinaypandat.atlassian.net/jira/software/projects/QFP/boards/4)
 
 ### MVP Requirements
 
@@ -48,3 +51,6 @@ This is final Springboot API project of QA Software Development Bootcamp.
 ## Licence
 
 Distributed under the MIT Licence.
+
+## Contact
+Developer: Vinay Pandey - engg.vinaypandey@gmail.com
