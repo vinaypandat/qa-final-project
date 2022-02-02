@@ -69,17 +69,14 @@ public class UserControllerSystemIntegrationTest {
         dateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
         usernameExistsMessage = "{\n" +
                 "    \"httpStatus\": \"CONFLICT\",\n" +
-                "    \"dateTime\": \"" + dateTime + "\",\n" +
                 "    \"error\": \"User with this username already exists\"\n" +
                 "}";
         userNotFoundMessage = "{\n" +
                 "    \"httpStatus\": \"NOT_FOUND\",\n" +
-                "    \"dateTime\": \"" + dateTime + "\",\n" +
                 "    \"error\": \"User with ID 10 doesn't exist\"\n" +
                 "}";
         userFieldValidationMessage = "{\n" +
                 "    \"httpStatus\": \"BAD_REQUEST\",\n" +
-                "    \"dateTime\": \"" + dateTime + "\",\n" +
                 "    \"error\": \"[age: must be greater than or equal to 18] \"\n" +
                 "}";
     }
