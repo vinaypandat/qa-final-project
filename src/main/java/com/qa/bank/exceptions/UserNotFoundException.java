@@ -10,13 +10,6 @@ import javax.persistence.EntityNotFoundException;
 public class UserNotFoundException extends EntityNotFoundException {
 
     /**
-     * Default constructor for Exception
-     */
-    public UserNotFoundException(){
-        super();
-    }
-
-    /**
      * Constructor with message field for Exception
      * @param message Error message argument
      */

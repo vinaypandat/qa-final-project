@@ -74,8 +74,7 @@ Updates user by id. It will give user doesn't exit if ID is not in the database.
 
 Deletes user by id. It will give user doesn't exit if ID is not in the database.
 
->http://localhost:8080/user/delete/{id} 
-
+>http://localhost:8080/user/delete/{id}
 ---
 
 ## Screenshots
