@@ -2,6 +2,7 @@ package com.qa.bank.service;
 
 import com.qa.bank.data.entity.User;
 import com.qa.bank.data.repository.UserRepository;
+import com.qa.bank.exceptions.UserNotFoundException;
 import com.qa.bank.exceptions.UsernameAlreadyExists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -67,9 +68,8 @@ public class UserServiceIntegrationTest {
     public void createUserExceptionTest(){
         String existingUsername = "nickf";
         when(userRepository.existsByUsername(existingUsername)).thenReturn(true);
-        UsernameAlreadyExists error = assertThrows(UsernameAlreadyExists.class, () -> {
-           userService.createUser(dummyUser);
-        });
+        UsernameAlreadyExists error = assertThrows(UsernameAlreadyExists.class, () ->
+                userService.createUser(dummyUser));
         assertThat(error.getMessage())
                 .isEqualTo("User with this username already exists");
         verify(userRepository).existsByUsername(existingUsername);
@@ -88,7 +88,7 @@ public class UserServiceIntegrationTest {
 
     /**
      * UPDATE
-     * updateUser valid operation test
+     * updateUser valid and invalid operations test
      */
     @Test
     public void updateUserTest(){
@@ -102,9 +102,19 @@ public class UserServiceIntegrationTest {
         verify(userRepository).save(updatedUser);
     }
 
+    @Test
+    public void updateUserExceptionTest(){
+        when(userRepository.findById(validUser.getId())).thenReturn(Optional.empty());
+        UserNotFoundException error = assertThrows(UserNotFoundException.class, () ->
+                userService.updateUser(validUser.getId(), dummyUser));
+        assertThat(error.getMessage())
+                .isEqualTo("User with ID " + validUser.getId() + " doesn't exist");
+        verify(userRepository).findById(validUser.getId());
+    }
+
     /**
      * DELETE
-     * deleteUser valid operation test
+     * deleteUser valid and invalid operations test
      */
     @Test
     public void deleteUserTest(){
@@ -112,5 +122,15 @@ public class UserServiceIntegrationTest {
         assertThat(userService.deleteUser(validUser.getId())).isEqualTo(dummyUser);
         verify(userRepository).findById(validUser.getId());
         verify(userRepository).deleteById(validUser.getId());
+    }
+
+    @Test
+    public void deleteUserExceptionTest(){
+        when(userRepository.findById(validUser.getId())).thenReturn(Optional.empty());
+        UserNotFoundException error = assertThrows(UserNotFoundException.class, () ->
+                userService.deleteUser(validUser.getId()));
+        assertThat(error.getMessage())
+                .isEqualTo("User with ID " + validUser.getId() + " doesn't exist");
+        verify(userRepository).findById(validUser.getId());
     }
 }
