@@ -7,12 +7,6 @@ import javax.persistence.EntityExistsException;
  * @author Vinay
  */
 public class UsernameAlreadyExists extends EntityExistsException {
-    /**
-     * Default constructor for Exception
-     */
-    public UsernameAlreadyExists(){
-        super();
-    }
 
     /**
      * Constructor with message field for Exception
