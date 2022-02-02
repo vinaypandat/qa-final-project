@@ -18,16 +18,11 @@ public class ErrorModel {
 
     public ErrorModel(HttpStatus httpStatus, String error) {
         this.httpStatus = httpStatus;
-        this.dateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
         this.error = error;
     }
 
     public HttpStatus getHttpStatus() {
         return httpStatus;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
     }
 
     public String getError() {
