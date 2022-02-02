@@ -45,6 +45,17 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User getUserByUsername(String username){
+        if (userRepository.existsByUsername(username)){
+            System.out.println(username);
+            return userRepository.findByUsername(username);
+        }else {
+            throw new UserNotFoundException("User with username '"+ username + "' not found.");
+        }
+
+    }
+
+
     /**
      * UPDATE user in database
      * @param id ID of user to update

@@ -46,6 +46,16 @@ public class UserController {
     }
 
     /**
+     * READ user by username
+     * @param username username to find
+     * @return Returns User if exists in the database
+     */
+    @GetMapping(path = "/{username}")
+    public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username){
+        return ResponseEntity.status(HttpStatus.FOUND).body(userService.getUserByUsername(username));
+    }
+
+    /**
      * UPDATE
      * @param id ID of user to update
      * @param user New details of User

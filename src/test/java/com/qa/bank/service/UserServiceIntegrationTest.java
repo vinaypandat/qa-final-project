@@ -78,12 +78,32 @@ public class UserServiceIntegrationTest {
     /**
      * READ
      * getUsers test
+     * getUserByUsername valid and invalid tests
      */
     @Test
     public void getUsersTest(){
         when(userRepository.findAll()).thenReturn(users);
         assertThat(userService.getUsers()).isEqualTo(users);
         verify(userRepository).findAll();
+    }
+
+    @Test
+    public void getUserByUsername(){
+        when(userRepository.existsByUsername(dummyUser.getUsername())).thenReturn(true);
+        when(userRepository.findByUsername(dummyUser.getUsername())).thenReturn(validUser);
+        assertThat(validUser).isEqualTo(userService.getUserByUsername(dummyUser.getUsername()));
+        verify(userRepository).findByUsername(dummyUser.getUsername());
+        verify(userRepository).existsByUsername(dummyUser.getUsername());
+    }
+
+    @Test
+    public void getUserByUsernameExceptionTest(){
+        when(userRepository.existsByUsername(dummyUser.getUsername())).thenReturn(false);
+        UserNotFoundException error = assertThrows(UserNotFoundException.class, () ->
+                userService.getUserByUsername(dummyUser.getUsername()));
+        assertThat(error.getMessage())
+                .isEqualTo("User with username '"+ dummyUser.getUsername() + "' not found.");
+        verify(userRepository).existsByUsername(dummyUser.getUsername());
     }
 
     /**

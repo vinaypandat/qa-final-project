@@ -66,6 +66,7 @@ public class UserControllerIntegrationTest {
     /**
      * READ Operations
      * getUsers Test
+     * getUserByUsername Test
      */
     @Test
     public void getUsersTest(){
@@ -74,6 +75,14 @@ public class UserControllerIntegrationTest {
         assertThat(ResponseEntity.status(HttpStatus.OK).body(users))
                 .isEqualTo(userController.getUsers());
         verify(userService).getUsers();
+    }
+
+    @Test
+    public void getUserByUsernameTest(){
+        when(userService.getUserByUsername(dummyUser.getUsername())).thenReturn(validUser);
+        assertThat(ResponseEntity.status(HttpStatus.FOUND).body(validUser))
+                .isEqualTo(userController.getUserByUsername(dummyUser.getUsername()));
+        verify(userService).getUserByUsername(dummyUser.getUsername());
     }
 
     /**
