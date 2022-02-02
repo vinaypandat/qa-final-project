@@ -41,8 +41,6 @@ public class UserControllerSystemIntegrationTest {
     @Autowired
     private UserRepository userRepository;
 
-    private ErrorModel errorModel;
-
     // Pre-populating data for testing
     private final List<User> usersInDatabase = new ArrayList<>();
     private User dummyUser;
@@ -52,6 +50,7 @@ public class UserControllerSystemIntegrationTest {
     LocalDateTime dateTime;
     String usernameExistsMessage;
     String userNotFoundMessage;
+    String userFieldValidationMessage;
     /**
      * This will initialise data before each test runs
      */
@@ -73,6 +72,16 @@ public class UserControllerSystemIntegrationTest {
                 "    \"dateTime\": \"" + dateTime + "\",\n" +
                 "    \"error\": \"User with this username already exists\"\n" +
                 "}";
+        userNotFoundMessage = "{\n" +
+                "    \"httpStatus\": \"NOT_FOUND\",\n" +
+                "    \"dateTime\": \"" + dateTime + "\",\n" +
+                "    \"error\": \"User with ID 10 doesn't exist\"\n" +
+                "}";
+        userFieldValidationMessage = "{\n" +
+                "    \"httpStatus\": \"BAD_REQUEST\",\n" +
+                "    \"dateTime\": \"" + dateTime + "\",\n" +
+                "    \"error\": \"[age: must be greater than or equal to 18] \"\n" +
+                "}";
     }
 
     /**
@@ -81,6 +90,7 @@ public class UserControllerSystemIntegrationTest {
      */
     @Test
     public void createUserTest() throws Exception {
+        // Checking for valid non-existing username
         mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/user/register/");
         mockRequest.contentType(MediaType.APPLICATION_JSON);
         mockRequest.content(objectMapper.writeValueAsString(dummyUser));
@@ -94,6 +104,7 @@ public class UserControllerSystemIntegrationTest {
 
     @Test
     public void createUserExceptionTest() throws Exception {
+        // Checking for invalid existing username
         User existingUser = new User("lilya", "pass3", "Lily", "Adams", 34);
         mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/user/register/");
         mockRequest.contentType(MediaType.APPLICATION_JSON);
@@ -128,6 +139,7 @@ public class UserControllerSystemIntegrationTest {
     @Test
     public void updateUserTest() throws Exception{
         User updatedUser = new User(3L,"nickf", "password", "Nick", "Fury", 31);
+        // Checking for valid ID
         mockRequest = MockMvcRequestBuilders.request(HttpMethod.PUT, "/user/update/3");
         mockRequest.contentType(MediaType.APPLICATION_JSON);
         mockRequest.content(objectMapper.writeValueAsString(dummyUser));
@@ -139,8 +151,16 @@ public class UserControllerSystemIntegrationTest {
     }
 
     @Test
-    public void updateUserExceptionTest(){
-        // To do
+    public void updateUserExceptionTest() throws Exception{
+        // Checking for invalid ID
+        mockRequest = MockMvcRequestBuilders.request(HttpMethod.PUT, "/user/update/10");
+        mockRequest.contentType(MediaType.APPLICATION_JSON);
+        mockRequest.content(objectMapper.writeValueAsString(dummyUser));
+        mockRequest.accept(MediaType.APPLICATION_JSON);
+
+        ResultMatcher status = MockMvcResultMatchers.status().isNotFound();
+        ResultMatcher content = MockMvcResultMatchers.content().json(userNotFoundMessage);
+        mockMvc.perform(mockRequest).andExpect(status).andExpect(content);
     }
 
     /**
@@ -150,6 +170,7 @@ public class UserControllerSystemIntegrationTest {
     @Test
     public void deleteUserTest() throws Exception{
         User deletedUser = new User("lilya", "pass3", "Lily", "Adams", 34);
+        // Checking for valid input ID
         mockRequest = MockMvcRequestBuilders.request(HttpMethod.DELETE, "/user/delete/3");
         mockRequest.accept(MediaType.APPLICATION_JSON);
 
@@ -159,16 +180,34 @@ public class UserControllerSystemIntegrationTest {
     }
 
     @Test
-    public void deleteUserExceptionTest(){
-        // To do
+    public void deleteUserExceptionTest() throws Exception{
+        // Checking for invalid input ID
+        mockRequest = MockMvcRequestBuilders.request(HttpMethod.DELETE, "/user/delete/10");
+        mockRequest.accept(MediaType.APPLICATION_JSON);
+
+        ResultMatcher status = MockMvcResultMatchers.status().isNotFound();
+        ResultMatcher content = MockMvcResultMatchers.content().json(userNotFoundMessage);
+        mockMvc.perform(mockRequest).andExpect(status).andExpect(content);
     }
 
     /**
      * Field Validation test
      */
     @Test
-    public void fieldValidationExceptionTest(){
-        // To do
+    public void fieldValidationExceptionTest() throws Exception{
+        // Checking invalid field i.e. age which should be between 18 and 120
+        User invalidUser = new User("jackr", "pass2", "Jack", "Reacher", 15);
+        // Checking for valid ID
+        mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "/user/register/");
+        mockRequest.contentType(MediaType.APPLICATION_JSON);
+        mockRequest.content(objectMapper.writeValueAsString(invalidUser));
+        mockRequest.accept(MediaType.APPLICATION_JSON);
+
+        ResultMatcher status = MockMvcResultMatchers.status().isBadRequest();
+        ResultMatcher content = MockMvcResultMatchers.content().json(userFieldValidationMessage);
+        mockMvc.perform(mockRequest).andExpect(status).andExpect(content);
+
+
     }
 
 }
