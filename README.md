@@ -9,6 +9,12 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/vinaypandat/qa-final-project)
 
 
+| Screenshots               | Links                                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------------- |
+| [Postman](#Postman)       | [Jira boards](https://vinaypandat.atlassian.net/jira/software/projects/QFP/boards/4)        |
+| [Database](#Database)     | [JAVA-docs](https://vinaypandat.github.io/QA-Final-Project-Java-docs/)                      |
+| [Tests](#test-results)    | [Coverage Report](https://vinaypandat.github.io/Coverage-Report-QA-Project/)                |
+
 ## Project Specifications
 
 This is final Springboot API project of QA Software Development Bootcamp.
@@ -36,12 +42,6 @@ This is final Springboot API project of QA Software Development Bootcamp.
 - Unit & Integration Testing: **JUnit**
 
 ---
-
-## Links
-- [JAVA-docs](https://vinaypandat.github.io/qa-final-project/)
-- [Jira boards](https://vinaypandat.atlassian.net/jira/software/projects/QFP/boards/4)
-
----
 ## Usage
 ### Field Constraints
 
@@ -55,7 +55,8 @@ This is final Springboot API project of QA Software Development Bootcamp.
 ### CRUD operations
 #### CREATE
 
-Creates user in database. To register a user, username field must be unique.
+Creates user in database. To register a user, username field must be unique. If username alreay exist, it will give and error.
+
 > http://localhost:8080/user/register/
 
 #### READ
@@ -66,13 +67,13 @@ Read all users from database.
 
 #### UPDATE
 
-Updates user by id. It will give user doesn't exit if ID is not in the database.
+Updates user by id. It will give user doesn't exist if ID is not in the database.
 
 >http://localhost:8080/user/update/{id}
 
 #### DELETE
 
-Deletes user by id. It will give user doesn't exit if ID is not in the database.
+Deletes user by id. It will give user doesn't exist if ID is not in the database.
 
 >http://localhost:8080/user/delete/{id}
 ---
@@ -80,20 +81,45 @@ Deletes user by id. It will give user doesn't exit if ID is not in the database.
 ## Screenshots
 ### Postman
 
-> Read all users from database
+> Create user if username doesn't exists in the database.
 
-![](https://github.com/vinaypandat/qa-final-project/blob/documents/Documents/images/postman/READ_all.png)
+![](https://github.com/vinaypandat/qa-final-project/blob/dev/Documents/Screenshots/Postman/beforeDTO/CREATE_User.png?raw=true)
 
+> Read all users from the database.
+
+![](https://github.com/vinaypandat/qa-final-project/blob/dev/Documents/Screenshots/Postman/beforeDTO/READ_all.png?raw=true)
+
+> Updates existing user in the database.
+
+![](https://github.com/vinaypandat/qa-final-project/blob/dev/Documents/Screenshots/Postman/beforeDTO/UPDATE_User.png?raw=true)
+
+> Deletes existing user from the database.
+
+![](https://github.com/vinaypandat/qa-final-project/blob/dev/Documents/Screenshots/Postman/beforeDTO/DELETE_User.png?raw=true)
+
+---
 ### Database
-> Will be posted soon
+
+> Empty user table in the database after first run of the application.
+
+![](https://github.com/vinaypandat/qa-final-project/blob/dev/Documents/Screenshots/Database/EmptyDatabaseOnStart.png?raw=true)
+
+> Populated user table in the database using CREATE operations.
+
+![](https://github.com/vinaypandat/qa-final-project/blob/dev/Documents/Screenshots/Database/PopulatedDB_UsingCreate.png?raw=true)
+
+---
+
 ### Test Results
 > Will be posted soon
-### Coverage Report
-> Will be posted soon
+
+---
 
 ## Licence
 
 Distributed under the MIT Licence.
+
+---
 
 ## Contact
 Developer: Vinay Pandey - engg.vinaypandey@gmail.com
