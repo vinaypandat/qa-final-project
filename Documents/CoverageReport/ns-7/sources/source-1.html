@@ -1,0 +1,102 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > UserRepository</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.qa.bank.data.repository</a>
+</div>
+
+<h1>Coverage Summary for Class: UserRepository (com.qa.bank.data.repository)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">UserRepository$MockitoMock$1456885608</td>
+  </tr>
+  <tr>
+    <td class="name">UserRepository$MockitoMock$1456885608$auxiliary$5keUgqAb</td>
+  </tr>
+  <tr>
+    <td class="name">UserRepository$MockitoMock$1456885608$auxiliary$7zw9guc0</td>
+  </tr>
+  <tr>
+    <td class="name">UserRepository$MockitoMock$1456885608$auxiliary$sKIl5t9d</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.qa.bank.data.repository;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.qa.bank.data.entity.User;
+<i class="no-highlight">4</i>&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+<i class="no-highlight">5</i>&nbsp;import org.springframework.stereotype.Repository;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;/**
+<i class="no-highlight">8</i>&nbsp; * User repository to provide JPA functionalities
+<i class="no-highlight">9</i>&nbsp; * @author Vinay
+<i class="no-highlight">10</i>&nbsp; */
+<i class="no-highlight">11</i>&nbsp;@Repository
+<i class="no-highlight">12</i>&nbsp;public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;    /**
+<i class="no-highlight">15</i>&nbsp;     * Checks if User with the given username exists
+<i class="no-highlight">16</i>&nbsp;     * @param username username to be checked
+<i class="no-highlight">17</i>&nbsp;     * @return Returns true if username exists otherwise false
+<i class="no-highlight">18</i>&nbsp;     */
+<i class="no-highlight">19</i>&nbsp;    boolean existsByUsername(String username);
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-02-02 15:12</div>
+</div>
+</body>
+</html>

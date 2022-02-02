@@ -3,4 +3,5 @@ com.qa.bank.configuration
 com.qa.bank.controller
 com.qa.bank.data.entity
 com.qa.bank.data.repository
+com.qa.bank.exceptions
 com.qa.bank.service
