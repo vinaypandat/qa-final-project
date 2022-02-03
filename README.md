@@ -13,8 +13,8 @@
 
 ## Why are we doing this?
 
-This is the final project(Bank API) of QA Software Development Bootcamp where we are implementing our learnings during
-the 9 weeks training. The project requires us to create a working Spring Boot API. With this we will be able
+This is the final project(Bank API) of QA Software Development Bootcamp where, we are implementing our learnings during
+the 9 weeks training. The project require us to create a working Spring Boot API. With this, we will be able
 to test our understanding in the following:
 - Agile & Project Management (Git, Jira)
 - Databases & Cloud Fundamentals (H2, MySQL)
@@ -50,16 +50,16 @@ to test our understanding in the following:
 </details>
 
 ### How did I expect this challenge to go?
-I started with the planning of structure and design of the challenge. I had laid out the initial structure
-of the project on Jira boards. I have expected this challenge to be easy, but I faced a few difficulties in
-writing the system integration test and tests for exceptions for which I had to use the QA community tutorials,
+I started with the planning of structure and design of the challenge and laid out the initial structure 
+of the project on Jira boards. The challenge was expected to be easy, however, did face a few difficulties in
+writing the system integration tests and tests for exceptions for which I had to use the QA community tutorials,
 recorded lectures and other online resources.
 
-### What went well? / What didn't go as planned?
-I did find writing the whole API easy. I had finished MVP in just two days, and then I did stretch goals i.e.
-custom exception, custom queries, testing with Mockito and got over 90% of coverage. I was expecting to finish
-other stretch goals like one-to-many and many-to-one entity relationships but writing tests and documentation 
-took more time than I was expecting.
+### What went well and what didn't go as planned?
+Writing the whole API was smooth. I had finished MVP in a few days, and then decided to do stretch goals i.e.
+custom exception, custom queries, testing with Mockito and achieved over 90% of code coverage. I was expecting
+to finish other stretch goals like one-to-many and many-to-one entity relationships, however writing tests and 
+documentation took more time than expected.
 
 ### Possible improvements for future revisions?
 The future improvement for this Bank API that I think of will be to create an entity Account and one-to-many and
