@@ -49,15 +49,15 @@ to test our understanding in the following:
 - Unit & Integration Testing: **JUnit**
 </details>
 
-### How I expected this challenge to go?
+### How did I expect this challenge to go?
 I started with the planning of structure and design of the challenge. I had laid out the initial structure
 of the project on Jira boards. I have expected this challenge to be easy, but I faced a few difficulties in
 writing the system integration test and tests for exceptions for which I had to use the QA community tutorials,
 recorded lectures and other online resources.
 
 ### What went well? / What didn't go as planned?
-I did find writing the whole API easy.I had finished MVP in just two days, and then I did stretch goals i.e.
-custom exception, custom queries, testing with mockito and got over 90% of coverage. I was expecting to finish
+I did find writing the whole API easy. I had finished MVP in just two days, and then I did stretch goals i.e.
+custom exception, custom queries, testing with Mockito and got over 90% of coverage. I was expecting to finish
 other stretch goals like one-to-many and many-to-one entity relationships but writing tests and documentation 
 took more time than I was expecting.
 
@@ -78,7 +78,7 @@ many-to-one relationship, then add functionality like balance retrieval and fetc
 - **lastName:** not null and must be between 2 and 15 characters.
 - **age:** integer and between 18 and 120.
 
-### To use Bank API you need to take following steps:
+### To use Bank API you need to take the following steps:
 
 1. Clone the GitHub repository using `git clone https://github.com/vinaypandat/qa-final-project.git`.
 2. You can either run the JAR package within the cloned folder using `java -jar Bank-0.0.1-SNAPSHOT.jar` or you can open the project
