@@ -83,7 +83,7 @@ public class UserControllerSystemIntegrationTest {
 
     /**
      * CREATE
-     * createUser valid and invalid operations tests
+     * createUser valid operations tests
      */
     @Test
     public void createUserTest() throws Exception {
@@ -99,6 +99,10 @@ public class UserControllerSystemIntegrationTest {
 
     }
 
+    /**
+     * CREATE
+     * createUser invalid operations tests
+     */
     @Test
     public void createUserExceptionTest() throws Exception {
         // Checking for invalid existing username
@@ -131,7 +135,7 @@ public class UserControllerSystemIntegrationTest {
 
     /**
      * UPDATE
-     * updateUser valid and invalid operations test
+     * updateUser valid operations test
      */
     @Test
     public void updateUserTest() throws Exception{
@@ -147,6 +151,10 @@ public class UserControllerSystemIntegrationTest {
         mockMvc.perform(mockRequest).andExpect(status).andExpect(content);
     }
 
+    /**
+     * UPDATE
+     * updateUser invalid operations test
+     */
     @Test
     public void updateUserExceptionTest() throws Exception{
         // Checking for invalid ID
@@ -162,7 +170,7 @@ public class UserControllerSystemIntegrationTest {
 
     /**
      * DELETE
-     * deleteUser valid and invalid operations test
+     * deleteUser valid operations test
      */
     @Test
     public void deleteUserTest() throws Exception{
@@ -176,6 +184,10 @@ public class UserControllerSystemIntegrationTest {
         mockMvc.perform(mockRequest).andExpect(status).andExpect(content);
     }
 
+    /**
+     * DELETE
+     * deleteUser invalid operations test
+     */
     @Test
     public void deleteUserExceptionTest() throws Exception{
         // Checking for invalid input ID

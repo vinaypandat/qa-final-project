@@ -13,8 +13,8 @@
 
 ## Why are we doing this?
 
-This is the final project(Bank API) of QA Software Development Bootcamp where we are implementing our learnings during
-the 9 weeks training. The project requires us to create a working Spring Boot API. With this we will be able
+This is the final project(Bank API) of QA Software Development Bootcamp where, we are implementing our learnings during
+the 9 weeks training. The project require us to create a working Spring Boot API. With this, we will be able
 to test our understanding in the following:
 - Agile & Project Management (Git, Jira)
 - Databases & Cloud Fundamentals (H2, MySQL)
@@ -50,16 +50,16 @@ to test our understanding in the following:
 </details>
 
 ### How did I expect this challenge to go?
-I started with the planning of structure and design of the challenge. I had laid out the initial structure
-of the project on Jira boards. I have expected this challenge to be easy, but I faced a few difficulties in
-writing the system integration test and tests for exceptions for which I had to use the QA community tutorials,
+I started with the planning of structure and design of the challenge and laid out the initial structure
+of the project on Jira boards. The challenge was expected to be easy, however, did face a few difficulties in
+writing the system integration tests and tests for exceptions for which I had to use the QA community tutorials,
 recorded lectures and other online resources.
 
-### What went well? / What didn't go as planned?
-I did find writing the whole API easy. I had finished MVP in just two days, and then I did stretch goals i.e.
-custom exception, custom queries, testing with Mockito and got over 90% of coverage. I was expecting to finish
-other stretch goals like one-to-many and many-to-one entity relationships but writing tests and documentation 
-took more time than I was expecting.
+### What went well and what didn't go as planned?
+Writing the whole API was smooth. I had finished MVP in a few days, and then decided to do stretch goals i.e.
+custom exception, custom queries, testing with Mockito and achieved over 90% of code coverage. I was expecting
+to finish other stretch goals like one-to-many and many-to-one entity relationships, however writing tests and
+documentation took more time than expected.
 
 ### Possible improvements for future revisions?
 The future improvement for this Bank API that I think of will be to create an entity Account and one-to-many and
@@ -82,7 +82,7 @@ many-to-one relationship, then add functionality like balance retrieval and fetc
 
 1. Clone the GitHub repository using `git clone https://github.com/vinaypandat/qa-final-project.git`.
 2. You can either run the JAR package within the cloned folder using `java -jar Bank-0.0.1-SNAPSHOT.jar` or you can open the project
-in Eclipse and run it as a Spring Boot project.
+   in Eclipse and run it as a Spring Boot project.
 3. The application runs on port 8080 for development and port 80 for production on `http://localhost/`.
 4. To use API you can use either Postman or Swagger.
 5. Link for swagger UI is `http://localhost:8080/swagger-ui/index.html#/`
@@ -93,13 +93,13 @@ in Eclipse and run it as a Spring Boot project.
 <details>  
 <summary> CREATE method </summary> 
 
-- Creates user in database. To register a user, username field must be unique. If username already exist, 
-it will give and error.
+- Creates user in database. To register a user, username field must be unique. If username already exist,
+  it will give and error.
 
 - Create function requires `POST` method on `http://localhost:8080/user/register/` and `JSON` data
-in the body in the form below.
+  in the body in the form below.
 - `username` field must be unique.
-    
+
     ```json
     {
         "username": "jackwz",
@@ -110,7 +110,7 @@ in the body in the form below.
     }
     ```
 - On successful creation of user in database, it will return `JSON` body.
-  
+
     ```json
     {
         "id": 4,
@@ -135,7 +135,7 @@ in the body in the form below.
 <summary>READ methods</summary>
 
 - There are two methods to READ the data. `getUsers` returns all users from the database and `getUserByUsername` returns
-user with the `username` given.
+  user with the `username` given.
 - To use READ all users, use `GET` method on `http://localhost:8080/user`.
 - To use READ user by `username`, use `GET` method on `http://localhost:8080/user/{username}`.
 
@@ -144,8 +144,8 @@ user with the `username` given.
 <details>
 <summary>UPDATE method</summary>
 
-- Update requires `id` which can be passed to `http://localhost:8080/user/update/{id}` and body in `JSON` 
-format. 
+- Update requires `id` which can be passed to `http://localhost:8080/user/update/{id}` and body in `JSON`
+  format.
 
     ```json
     {
@@ -296,8 +296,8 @@ format.
 
 ## Links
 
-- [Jira boards](https://vinaypandat.atlassian.net/jira/software/projects/QFP/boards/4) 
-- [JAVA-docs](https://vinaypandat.github.io/QA-Final-Project-Java-docs/)               
+- [Jira boards](https://vinaypandat.atlassian.net/jira/software/projects/QFP/boards/4)
+- [JAVA-docs](https://vinaypandat.github.io/QA-Final-Project-Java-docs/)
 - [Coverage Report](https://vinaypandat.github.io/Coverage-Report-QA-Project/)
 
 ---

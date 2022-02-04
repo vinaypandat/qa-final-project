@@ -55,7 +55,7 @@ public class UserServiceIntegrationTest {
 
     /**
      * CREATE
-     * createUser valid and invalid operations tests
+     * createUser valid operations tests
      */
     @Test
     public void createUserTest(){
@@ -64,6 +64,10 @@ public class UserServiceIntegrationTest {
         verify(userRepository).save(dummyUser);
     }
 
+    /**
+     * CREATE
+     * createUser invalid operations tests
+     */
     @Test
     public void createUserExceptionTest(){
         String existingUsername = "nickf";
@@ -87,6 +91,10 @@ public class UserServiceIntegrationTest {
         verify(userRepository).findAll();
     }
 
+    /**
+     * READ
+     * getUserByUsername valid and invalid tests
+     */
     @Test
     public void getUserByUsername(){
         when(userRepository.existsByUsername(dummyUser.getUsername())).thenReturn(true);
@@ -96,6 +104,10 @@ public class UserServiceIntegrationTest {
         verify(userRepository).existsByUsername(dummyUser.getUsername());
     }
 
+    /**
+     * READ
+     * getUserByUsername invalid tests
+     */
     @Test
     public void getUserByUsernameExceptionTest(){
         when(userRepository.existsByUsername(dummyUser.getUsername())).thenReturn(false);
@@ -108,7 +120,7 @@ public class UserServiceIntegrationTest {
 
     /**
      * UPDATE
-     * updateUser valid and invalid operations test
+     * updateUser valid operations test
      */
     @Test
     public void updateUserTest(){
@@ -122,6 +134,11 @@ public class UserServiceIntegrationTest {
         verify(userRepository).save(updatedUser);
     }
 
+    /**
+     * UPDATE
+     * updateUser invalid operations test
+     */
+
     @Test
     public void updateUserExceptionTest(){
         when(userRepository.findById(validUser.getId())).thenReturn(Optional.empty());
@@ -134,7 +151,7 @@ public class UserServiceIntegrationTest {
 
     /**
      * DELETE
-     * deleteUser valid and invalid operations test
+     * deleteUser valid operations test
      */
     @Test
     public void deleteUserTest(){
@@ -144,6 +161,10 @@ public class UserServiceIntegrationTest {
         verify(userRepository).deleteById(validUser.getId());
     }
 
+    /**
+     * DELETE
+     * deleteUser invalid operations test
+     */
     @Test
     public void deleteUserExceptionTest(){
         when(userRepository.findById(validUser.getId())).thenReturn(Optional.empty());

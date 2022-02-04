@@ -2,12 +2,12 @@ package com.qa.bank.service;
 
 import com.qa.bank.data.entity.User;
 import com.qa.bank.data.repository.UserRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +18,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Vinay
  */
 @SpringBootTest
-@Transactional
 public class UserServiceUnitTest {
     @Autowired
     private UserService userService;
@@ -31,6 +30,7 @@ public class UserServiceUnitTest {
     private User dummyUser;
     private User validUser;
     Long nextUserId;
+
     /**
      * This will initialise data before each test runs
      */
@@ -49,15 +49,23 @@ public class UserServiceUnitTest {
     }
 
     /**
+     * Deletes data before each test
+     */
+    @AfterEach
+    public void deleteDataBeforeEachTest() {
+        userRepository.deleteAll();
+    }
+
+    /**
      * CREATE Operations
      * createUser Test
      * need to resolve this
      */
-//    @Test
-//    public void createUserTest(){
-//        validUser.setId(nextUserId);
-//        assertThat(validUser).isEqualTo(userService.createUser(dummyUser));
-//    }
+    @Test
+    public void createUserTest(){
+        validUser.setId(nextUserId);
+        assertThat(validUser).isEqualTo(userService.createUser(dummyUser));
+    }
 
     /**
      * READ Operations
@@ -84,8 +92,11 @@ public class UserServiceUnitTest {
      */
     @Test
     public void deleteUser(){
-        User deletedUser = new User("jackr", "pass2", "Jack", "Reacher", 25);
-        assertThat(deletedUser).isEqualTo(userService.deleteUser(2L));
+
+        User actualUser = usersInDatabase.get(1);
+        User expectedUser = new User(actualUser.getUsername(), actualUser.getPassword(),
+                actualUser.getFirstName(), actualUser.getLastName(), actualUser.getAge());
+        assertThat(expectedUser).isEqualTo(userService.deleteUser(actualUser.getId()));
     }
 
 }
