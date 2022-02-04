@@ -45,6 +45,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    /**
+     * READ user with the specific 'username' from database
+     * @return Returns list of Users
+     */
     public User getUserByUsername(String username){
         if (userRepository.existsByUsername(username)){
             System.out.println(username);

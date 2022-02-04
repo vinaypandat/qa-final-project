@@ -66,7 +66,6 @@ public class UserControllerIntegrationTest {
     /**
      * READ Operations
      * getUsers Test
-     * getUserByUsername Test
      */
     @Test
     public void getUsersTest(){
@@ -77,6 +76,10 @@ public class UserControllerIntegrationTest {
         verify(userService).getUsers();
     }
 
+    /**
+     * READ Operations
+     * getUserByUsername Test
+     */
     @Test
     public void getUserByUsernameTest(){
         when(userService.getUserByUsername(dummyUser.getUsername())).thenReturn(validUser);

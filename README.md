@@ -82,7 +82,7 @@ many-to-one relationship, then add functionality like balance retrieval and fetc
 
 1. Clone the GitHub repository using `git clone https://github.com/vinaypandat/qa-final-project.git`.
 2. You can either run the JAR package within the cloned folder using `java -jar Bank-0.0.1-SNAPSHOT.jar` or you can open the project
-in Eclipse and run it as a Spring Boot project.
+   in Eclipse and run it as a Spring Boot project.
 3. The application runs on port 8080 for development and port 80 for production on `http://localhost/`.
 4. To use API you can use either Postman or Swagger.
 5. Link for swagger UI is `http://localhost:8080/swagger-ui/index.html#/`
@@ -93,13 +93,13 @@ in Eclipse and run it as a Spring Boot project.
 <details>  
 <summary> CREATE method </summary> 
 
-- Creates user in database. To register a user, username field must be unique. If username already exist, 
-it will give and error.
+- Creates user in database. To register a user, username field must be unique. If username already exist,
+  it will give and error.
 
 - Create function requires `POST` method on `http://localhost:8080/user/register/` and `JSON` data
-in the body in the form below.
+  in the body in the form below.
 - `username` field must be unique.
-    
+
     ```json
     {
         "username": "jackwz",
@@ -110,7 +110,7 @@ in the body in the form below.
     }
     ```
 - On successful creation of user in database, it will return `JSON` body.
-  
+
     ```json
     {
         "id": 4,
@@ -135,7 +135,7 @@ in the body in the form below.
 <summary>READ methods</summary>
 
 - There are two methods to READ the data. `getUsers` returns all users from the database and `getUserByUsername` returns
-user with the `username` given.
+  user with the `username` given.
 - To use READ all users, use `GET` method on `http://localhost:8080/user`.
 - To use READ user by `username`, use `GET` method on `http://localhost:8080/user/{username}`.
 
@@ -144,8 +144,8 @@ user with the `username` given.
 <details>
 <summary>UPDATE method</summary>
 
-- Update requires `id` which can be passed to `http://localhost:8080/user/update/{id}` and body in `JSON` 
-format. 
+- Update requires `id` which can be passed to `http://localhost:8080/user/update/{id}` and body in `JSON`
+  format.
 
     ```json
     {
@@ -296,8 +296,8 @@ format.
 
 ## Links
 
-- [Jira boards](https://vinaypandat.atlassian.net/jira/software/projects/QFP/boards/4) 
-- [JAVA-docs](https://vinaypandat.github.io/QA-Final-Project-Java-docs/)               
+- [Jira boards](https://vinaypandat.atlassian.net/jira/software/projects/QFP/boards/4)
+- [JAVA-docs](https://vinaypandat.github.io/QA-Final-Project-Java-docs/)
 - [Coverage Report](https://vinaypandat.github.io/Coverage-Report-QA-Project/)
 
 ---
